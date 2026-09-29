@@ -362,4 +362,4 @@ docs: professional README with architecture diagram
 
 ---
 
-*Built by a Senior Quant Developer — institutional-grade, production-ready.*
+*Built by a Ankit — institutional-grade, production-ready.*
