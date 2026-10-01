@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" width="100%" height="100%" style="background-color: #fdfdfd; font-family: 'Segoe UI', 'Virgil', 'Comic Sans MS', sans-serif;">
+  <defs>
+    <!-- Filter for subtle hand-drawn paper shadow -->
+    <filter id="excali-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="3" dy="4" stdDeviation="0" flood-color="#1e1e1e" flood-opacity="0.15" />
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155" />
+    </marker>
+  </defs>
+
+  <!-- Title Badge -->
+  <rect x="280" y="20" width="400" height="42" rx="14" ry="14" fill="#FEF3C7" stroke="#D97706" stroke-width="2" filter="url(#excali-shadow)"/>
+  <text x="480" y="47" font-size="18" font-weight="bold" fill="#92400E" text-anchor="middle">SYSTEM ARCHITECTURE (CLEAN ARCHITECTURE)</text>
+
+  <!-- LAYER 1: Market Data & Broker -->
+  <g transform="translate(40, 85)">
+    <rect width="880" height="85" rx="14" ry="14" fill="#F0F9FF" stroke="#0284C7" stroke-width="2" stroke-dasharray="6,4" filter="url(#excali-shadow)"/>
+    <text x="20" y="24" font-size="13" font-weight="bold" fill="#0369A1" letter-spacing="1">MARKET DATA &amp; BROKER LAYER</text>
+    
+    <!-- Component 1 -->
+    <rect x="30" y="34" width="250" height="38" rx="8" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.8"/>
+    <text x="155" y="58" font-size="14" font-weight="600" fill="#075985" text-anchor="middle">MockWebSocketServer</text>
+    
+    <!-- Component 2 -->
+    <rect x="315" y="34" width="250" height="38" rx="8" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.8"/>
+    <text x="440" y="58" font-size="14" font-weight="600" fill="#075985" text-anchor="middle">ZerodhaMockBroker (Kite API)</text>
+    
+    <!-- Component 3 -->
+    <rect x="600" y="34" width="250" height="38" rx="8" fill="#E0F2FE" stroke="#0284C7" stroke-width="1.8"/>
+    <text x="725" y="58" font-size="14" font-weight="600" fill="#075985" text-anchor="middle">WebSocketManager (Reconnect)</text>
+  </g>
+
+  <!-- Down Arrow 1 -->
+  <path d="M 480 170 L 480 195" stroke="#334155" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- LAYER 2: Analytics & Regime -->
+  <g transform="translate(40, 200)">
+    <rect width="880" height="85" rx="14" ry="14" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2" stroke-dasharray="6,4" filter="url(#excali-shadow)"/>
+    <text x="20" y="24" font-size="13" font-weight="bold" fill="#6D28D9" letter-spacing="1">ANALYTICS &amp; REGIME SCORING</text>
+    
+    <!-- Component 1 -->
+    <rect x="30" y="34" width="450" height="38" rx="8" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.8"/>
+    <text x="255" y="58" font-size="14" font-weight="600" fill="#5B21B6" text-anchor="middle">Technical Indicators (ATR · EMA · RSI · MACD · ADX · VWAP · BB)</text>
+    
+    <!-- Component 2 -->
+    <rect x="510" y="34" width="340" height="38" rx="8" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.8"/>
+    <text x="680" y="58" font-size="14" font-weight="600" fill="#5B21B6" text-anchor="middle">Macro Regime Engine (VIX · FX · Crude · Yield)</text>
+  </g>
+
+  <!-- Down Arrow 2 -->
+  <path d="M 480 285 L 480 310" stroke="#334155" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- LAYER 3: Strategies -->
+  <g transform="translate(40, 315)">
+    <rect width="880" height="80" rx="14" ry="14" fill="#ECFDF5" stroke="#059669" stroke-width="2" stroke-dasharray="6,4" filter="url(#excali-shadow)"/>
+    <text x="20" y="24" font-size="13" font-weight="bold" fill="#047857" letter-spacing="1">STRATEGY EXECUTION ENGINE</text>
+    
+    <rect x="30" y="32" width="395" height="38" rx="8" fill="#D1FAE5" stroke="#059669" stroke-width="1.8"/>
+    <text x="227" y="56" font-size="14" font-weight="600" fill="#065F46" text-anchor="middle">GridStrategy (ATR Spacing · Pyramiding · TP/SL)</text>
+    
+    <rect x="455" y="32" width="395" height="38" rx="8" fill="#D1FAE5" stroke="#059669" stroke-width="1.8"/>
+    <text x="652" y="56" font-size="14" font-weight="600" fill="#065F46" text-anchor="middle">StopReverseStrategy (Trailing Stop-and-Reverse)</text>
+  </g>
+
+  <!-- Down Arrow 3 -->
+  <path d="M 480 395 L 480 420" stroke="#334155" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- LAYER 4: Risk Controls -->
+  <g transform="translate(40, 425)">
+    <rect width="880" height="80" rx="14" ry="14" fill="#FFF1F2" stroke="#E11D48" stroke-width="2" stroke-dasharray="6,4" filter="url(#excali-shadow)"/>
+    <text x="20" y="24" font-size="13" font-weight="bold" fill="#BE123C" letter-spacing="1">RISK CONTROLS &amp; PROTECTION</text>
+    
+    <rect x="30" y="32" width="255" height="38" rx="8" fill="#FFE4E6" stroke="#E11D48" stroke-width="1.8"/>
+    <text x="157" y="56" font-size="14" font-weight="600" fill="#9F1239" text-anchor="middle">KillSwitch (Loss / DD / Circuit)</text>
+    
+    <rect x="312" y="32" width="255" height="38" rx="8" fill="#FFE4E6" stroke="#E11D48" stroke-width="1.8"/>
+    <text x="439" y="56" font-size="14" font-weight="600" fill="#9F1239" text-anchor="middle">PositionCap (Symbol &amp; Portfolio)</text>
+    
+    <rect x="595" y="32" width="255" height="38" rx="8" fill="#FFE4E6" stroke="#E11D48" stroke-width="1.8"/>
+    <text x="722" y="56" font-size="14" font-weight="600" fill="#9F1239" text-anchor="middle">PyramidingController (Layer Limit)</text>
+  </g>
+
+  <!-- Down Arrow 4 -->
+  <path d="M 480 505 L 480 530" stroke="#334155" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- LAYER 5: Execution & Persistence -->
+  <g transform="translate(40, 535)">
+    <rect width="880" height="135" rx="14" ry="14" fill="#F8FAFC" stroke="#475569" stroke-width="2" stroke-dasharray="6,4" filter="url(#excali-shadow)"/>
+    <text x="20" y="24" font-size="13" font-weight="bold" fill="#334155" letter-spacing="1">EXECUTION, PERSISTENCE &amp; OBSERVABILITY</text>
+    
+    <!-- Row 1: Execution Engine -->
+    <rect x="30" y="35" width="260" height="38" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.8"/>
+    <text x="160" y="59" font-size="13" font-weight="600" fill="#3730A3" text-anchor="middle">OrderManager (Idempotent / Locks)</text>
+
+    <rect x="310" y="35" width="260" height="38" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.8"/>
+    <text x="440" y="59" font-size="13" font-weight="600" fill="#3730A3" text-anchor="middle">ReconciliationEngine (Sync)</text>
+
+    <rect x="590" y="35" width="260" height="38" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.8"/>
+    <text x="720" y="59" font-size="13" font-weight="600" fill="#3730A3" text-anchor="middle">BacktestEngine + WalkForward</text>
+
+    <!-- Row 2: Storage & Monitoring -->
+    <rect x="30" y="83" width="195" height="38" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.8"/>
+    <text x="127" y="107" font-size="13" font-weight="600" fill="#92400E" text-anchor="middle">DuckDBStore (ACID)</text>
+
+    <rect x="245" y="83" width="195" height="38" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.8"/>
+    <text x="342" y="107" font-size="13" font-weight="600" fill="#92400E" text-anchor="middle">Parquet Exporter</text>
+
+    <rect x="460" y="83" width="195" height="38" rx="8" fill="#F1F5F9" stroke="#64748B" stroke-width="1.8"/>
+    <text x="557" y="107" font-size="13" font-weight="600" fill="#334155" text-anchor="middle">TradeBlotter (CSV)</text>
+
+    <rect x="675" y="83" width="175" height="38" rx="8" fill="#F1F5F9" stroke="#64748B" stroke-width="1.8"/>
+    <text x="762" y="107" font-size="13" font-weight="600" fill="#334155" text-anchor="middle">structlog (JSON)</text>
+  </g>
+</svg>

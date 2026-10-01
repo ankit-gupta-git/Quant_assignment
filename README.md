@@ -45,7 +45,15 @@ This repository contains an end-to-end quantitative trading system implemented i
 
 The system is organized into decoupled layers where core domain entities have zero external dependencies. Strategies depend only on pure data models, allowing the exact same strategy code to execute within a live simulation or an event-driven backtest.
 
+<p align="center">
+  <img src="docs/diagrams/system_architecture.svg" alt="System Architecture Diagram" width="100%" />
+</p>
+
+<details>
+<summary><b>View Mermaid Source (Hand-Drawn Theme)</b></summary>
+
 ```mermaid
+%%{init: {'theme': 'neutral', 'look': 'handDrawn'}}%%
 flowchart TD
     subgraph DataLayer["Market Data & Broker Layer"]
         MDS[Mock WebSocket Server]
@@ -93,6 +101,7 @@ flowchart TD
     ExecutionLayer --> DataLayer
     ExecutionLayer --> StorageLayer
 ```
+</details>
 
 ### Directory Structure
 
@@ -250,7 +259,15 @@ The Macro Regime Engine (`app/macro/`) monitors systematic market conditions to 
 
 Financial systems must prevent duplicate order dispatch during network timeouts or engine restarts.
 
+<p align="center">
+  <img src="docs/diagrams/order_lifecycle_recovery.svg" alt="Order Lifecycle, Idempotency & Crash Recovery" width="100%" />
+</p>
+
+<details>
+<summary><b>View Mermaid Source (Hand-Drawn Theme)</b></summary>
+
 ```mermaid
+%%{init: {'theme': 'neutral', 'look': 'handDrawn'}}%%
 flowchart TD
     subgraph OrderSubmission["Order Submission & Idempotency"]
         SIG[Strategy Signal] --> GEN[Create Order with unique client_order_id]
@@ -274,6 +291,7 @@ flowchart TD
         DIFF -->|No| RESUME[Resume normal execution]
     end
 ```
+</details>
 
 1. **Idempotent Submission (`OrderManager.submit`)**:
    * Every order receives a deterministic or unique `client_order_id`.
@@ -287,7 +305,15 @@ flowchart TD
 
 ### Backtesting & Walk-Forward Framework
 
+<p align="center">
+  <img src="docs/diagrams/backtest_flow.svg" alt="Event-Driven Backtesting & Anti-Lookahead Mechanics" width="100%" />
+</p>
+
+<details>
+<summary><b>View Mermaid Source (Hand-Drawn Theme)</b></summary>
+
 ```mermaid
+%%{init: {'theme': 'neutral', 'look': 'handDrawn'}}%%
 sequenceDiagram
     autonumber
     participant Data as Historical CSV (data/sample_ohlc.csv)
@@ -308,6 +334,7 @@ sequenceDiagram
     Note over Engine,Pending: Phase 3: Queue for Next Bar
     Engine->>Pending: Convert Signals to Orders -> Enqueue for Candle t+1 OPEN
 ```
+</details>
 
 #### Strict Anti-Lookahead Bias Protection
 A pervasive flaw in naïve backtest implementations is executing a signal at the closing price of the bar that generated it. In reality, a strategy calculating signals on bar $t$'s close can only execute on bar $t+1$'s open at the earliest.
@@ -357,7 +384,15 @@ All calculations use Python `Decimal` to avoid floating-point rounding errors.
 
 ### Live Simulation Flow
 
+<p align="center">
+  <img src="docs/diagrams/simulation_flow.svg" alt="Live Simulation Pipeline" width="100%" />
+</p>
+
+<details>
+<summary><b>View Mermaid Source (Hand-Drawn Theme)</b></summary>
+
 ```mermaid
+%%{init: {'theme': 'neutral', 'look': 'handDrawn'}}%%
 flowchart LR
     MWS[MockWebSocketServer] -->|Candle Stream| STRAT[GridStrategy]
     STRAT -->|Signal| RISK{Risk Validation}
@@ -371,6 +406,7 @@ flowchart LR
     FILL --> PORT[Portfolio State]
     PORT --> BLOTTER[Trade Blotter & CSV]
 ```
+</details>
 
 ---
 

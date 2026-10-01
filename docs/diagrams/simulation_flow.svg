@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="100%" height="100%" style="background-color: #fdfdfd; font-family: 'Segoe UI', 'Virgil', 'Comic Sans MS', sans-serif;">
+  <defs>
+    <filter id="excali-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="3" dy="4" stdDeviation="0" flood-color="#1e1e1e" flood-opacity="0.15" />
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155" />
+    </marker>
+  </defs>
+
+  <!-- Title Badge -->
+  <rect x="290" y="16" width="380" height="38" rx="12" ry="12" fill="#E0F2FE" stroke="#0284C7" stroke-width="2" filter="url(#excali-shadow)"/>
+  <text x="480" y="41" font-size="16" font-weight="bold" fill="#0369A1" text-anchor="middle">LIVE SIMULATION &amp; EXECUTION PIPELINE</text>
+
+  <!-- Node 1: Mock WS Server -->
+  <g transform="translate(30, 80)">
+    <rect width="250" height="95" rx="12" ry="12" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2" filter="url(#excali-shadow)"/>
+    <text x="125" y="32" font-size="15" font-weight="bold" fill="#1D4ED8" text-anchor="middle">1. MockWebSocketServer</text>
+    <text x="125" y="55" font-size="12" fill="#4B5563" text-anchor="middle">Synthetic GBM Random Walk</text>
+    <text x="125" y="73" font-size="12" fill="#6B7280" text-anchor="middle">Streams OHLCV Candles</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 280 127 L 335 127" stroke="#334155" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="307" y="117" font-size="11" font-weight="600" fill="#475569" text-anchor="middle">Candle</text>
+
+  <!-- Node 2: Strategy Engine -->
+  <g transform="translate(345, 80)">
+    <rect width="260" height="95" rx="12" ry="12" fill="#ECFDF5" stroke="#10B981" stroke-width="2" filter="url(#excali-shadow)"/>
+    <text x="130" y="32" font-size="15" font-weight="bold" fill="#047857" text-anchor="middle">2. Grid / SAR Strategy</text>
+    <text x="130" y="55" font-size="12" fill="#4B5563" text-anchor="middle">Calculates ATR Grid Spacing</text>
+    <text x="130" y="73" font-size="12" fill="#6B7280" text-anchor="middle">Emits Buy / Sell / TP / SL Signal</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M 605 127 L 665 127" stroke="#334155" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="635" y="117" font-size="11" font-weight="600" fill="#475569" text-anchor="middle">Signal</text>
+
+  <!-- Node 3: Risk Controls -->
+  <g transform="translate(675, 80)">
+    <rect width="250" height="95" rx="12" ry="12" fill="#FFF1F2" stroke="#F43F5E" stroke-width="2" filter="url(#excali-shadow)"/>
+    <text x="125" y="32" font-size="15" font-weight="bold" fill="#BE123C" text-anchor="middle">3. Risk &amp; Kill Switch</text>
+    <text x="125" y="55" font-size="12" fill="#4B5563" text-anchor="middle">Daily Loss &amp; Drawdown Check</text>
+    <text x="125" y="73" font-size="12" fill="#6B7280" text-anchor="middle">Position Cap &amp; Pyramiding</text>
+  </g>
+
+  <!-- Vertical/Return Arrow 3 -> 4 (Down and Left) -->
+  <path d="M 800 175 L 800 220 L 780 220" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <path d="M 780 260 L 715 260" stroke="#334155" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="760" y="248" font-size="11" font-weight="600" fill="#047857" text-anchor="middle">Approved</text>
+
+  <!-- Node 4: Order Manager -->
+  <g transform="translate(425, 215)">
+    <rect width="280" height="95" rx="12" ry="12" fill="#EEF2FF" stroke="#6366F1" stroke-width="2" filter="url(#excali-shadow)"/>
+    <text x="140" y="32" font-size="15" font-weight="bold" fill="#4338CA" text-anchor="middle">4. Idempotent OrderManager</text>
+    <text x="140" y="55" font-size="12" fill="#4B5563" text-anchor="middle">Assigns client_order_id</text>
+    <text x="140" y="73" font-size="12" fill="#6B7280" text-anchor="middle">Async Lock + Deduplication Check</text>
+  </g>
+
+  <!-- Arrow 4 -> 5 -->
+  <path d="M 425 262 L 345 262" stroke="#334155" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="385" y="252" font-size="11" font-weight="600" fill="#475569" text-anchor="middle">Order</text>
+
+  <!-- Node 5: Broker Mock -->
+  <g transform="translate(50, 215)">
+    <rect width="285" height="95" rx="12" ry="12" fill="#FEF3C7" stroke="#D97706" stroke-width="2" filter="url(#excali-shadow)"/>
+    <text x="142" y="32" font-size="15" font-weight="bold" fill="#92400E" text-anchor="middle">5. ZerodhaMockBroker + DB</text>
+    <text x="142" y="55" font-size="12" fill="#4B5563" text-anchor="middle">Simulates Fills &amp; Slippage</text>
+    <text x="142" y="73" font-size="12" fill="#6B7280" text-anchor="middle">DuckDB Persistence &amp; Blotter CSV</text>
+  </g>
+</svg>
