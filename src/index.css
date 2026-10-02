@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    border-radius: 0px !important;
+  }
+
+  body {
+    background-color: #07090e;
+    color: #e2e8f0;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
+    font-size: 12px;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
+  /* Compact industrial scrollbars */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #07090e;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e293b;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #334155;
+  }
+}
+
+/* Institutional Terminal Layout Rules */
+.terminal-panel {
+  background-color: #0c1017;
+  border: 1px solid #1a2231;
+}
+
+.terminal-header {
+  background-color: #090d14;
+  border-bottom: 1px solid #1a2231;
+}
+
+.terminal-table {
+  border-collapse: collapse;
+}
+
+.terminal-table th {
+  background-color: #080c13;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  padding: 4px 8px;
+  border-bottom: 1px solid #1a2231;
+  border-right: 1px solid #101622;
+  white-space: nowrap;
+}
+
+.terminal-table td {
+  padding: 3px 8px;
+  border-bottom: 1px solid #101622;
+  border-right: 1px solid #0d121c;
+  font-size: 0.72rem;
+  font-family: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.terminal-table tr:hover td {
+  background-color: #121926;
+}
+
+.data-mono {
+  font-family: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle flat cursor */
+@keyframes term-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.term-cursor {
+  animation: term-blink 1s infinite;
+}
